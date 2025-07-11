@@ -1,15 +1,14 @@
-import pytest
 from app.split_integer import split_integer
 
 
-def test_split_integer_single_part():
+def test_split_integer_single_part() -> None:
     """Test splitting a number into a single part."""
     assert split_integer(8, 1) == [8]
     assert split_integer(1, 1) == [1]
     assert split_integer(100, 1) == [100]
 
 
-def test_split_integer_equal_parts():
+def test_split_integer_equal_parts() -> None:
     """Test splitting a number into equal parts (no remainder)."""
     assert split_integer(6, 2) == [3, 3]
     assert split_integer(10, 5) == [2, 2, 2, 2, 2]
@@ -17,7 +16,7 @@ def test_split_integer_equal_parts():
     assert split_integer(20, 4) == [5, 5, 5, 5]
 
 
-def test_split_integer_with_remainder():
+def test_split_integer_with_remainder() -> None:
     """Test splitting a number with remainder."""
     assert split_integer(17, 4) == [4, 4, 4, 5]
     assert split_integer(32, 6) == [5, 5, 5, 5, 6, 6]
@@ -25,7 +24,7 @@ def test_split_integer_with_remainder():
     assert split_integer(11, 3) == [3, 4, 4]
 
 
-def test_split_integer_small_numbers():
+def test_split_integer_small_numbers() -> None:
     """Test splitting small numbers."""
     assert split_integer(2, 2) == [1, 1]
     assert split_integer(3, 2) == [1, 2]
@@ -33,7 +32,7 @@ def test_split_integer_small_numbers():
     assert split_integer(7, 4) == [1, 2, 2, 2]
 
 
-def test_split_integer_large_parts():
+def test_split_integer_large_parts() -> None:
     """Test splitting into many parts."""
     result_10_10 = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
     assert split_integer(10, 10) == result_10_10
@@ -45,7 +44,7 @@ def test_split_integer_large_parts():
     assert split_integer(7, 7) == result_7_7
 
 
-def test_split_integer_edge_cases():
+def test_split_integer_edge_cases() -> None:
     """Test edge cases."""
     # Number equals parts
     assert split_integer(5, 5) == [1, 1, 1, 1, 1]
@@ -60,7 +59,7 @@ def test_split_integer_edge_cases():
     assert split_integer(11, 4) == [2, 3, 3, 3]
 
 
-def test_split_integer_properties():
+def test_split_integer_properties() -> None:
     """Test that the function satisfies all required properties."""
     test_cases = [
         (8, 1), (6, 2), (17, 4), (32, 6), (13, 5), (11, 3),
@@ -97,7 +96,7 @@ def test_split_integer_properties():
         assert positive_check, f"Non-positive elements: {result}"
 
 
-def test_split_integer_mathematical_correctness():
+def test_split_integer_mathematical_correctness() -> None:
     """Test mathematical properties of the split."""
     # When remainder is 0, all parts should be equal
     assert split_integer(12, 4) == [3, 3, 3, 3]
@@ -117,7 +116,7 @@ def test_split_integer_mathematical_correctness():
     assert count_base_plus_one == 4  # 4 parts with base+1 value
 
 
-def test_split_integer_boundary_conditions():
+def test_split_integer_boundary_conditions() -> None:
     """Test boundary conditions and special cases."""
     # Minimum valid inputs
     assert split_integer(1, 1) == [1]
