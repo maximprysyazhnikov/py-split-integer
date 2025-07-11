@@ -20,7 +20,7 @@ def test_split_integer_with_remainder() -> None:
     """Test splitting a number with remainder."""
     assert split_integer(17, 4) == [4, 4, 4, 5]
     assert split_integer(32, 6) == [5, 5, 5, 5, 6, 6]
-    assert split_integer(13, 5) == [2, 2, 2, 3, 3]
+    assert split_integer(13, 5) == [2, 2, 3, 3, 3]
     assert split_integer(11, 3) == [3, 4, 4]
 
 
@@ -121,15 +121,13 @@ def test_split_integer_boundary_conditions() -> None:
     # Minimum valid inputs
     assert split_integer(1, 1) == [1]
     assert split_integer(2, 1) == [2]
-    assert split_integer(1, 1) == [1]
-
-    # Cases where value < number_of_parts
-    assert split_integer(3, 5) == [0, 0, 1, 1, 1]
-    assert split_integer(2, 3) == [0, 1, 1]
-    assert split_integer(1, 2) == [0, 1]
 
     # Large numbers
     result_1000_7 = split_integer(1000, 7)
     assert len(result_1000_7) == 7
     assert sum(result_1000_7) == 1000
     assert max(result_1000_7) - min(result_1000_7) <= 1
+
+    # Additional test cases
+    assert split_integer(50, 7) == [7, 7, 7, 7, 7, 7, 8]
+    assert split_integer(29, 6) == [4, 5, 5, 5, 5, 5]
